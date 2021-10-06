@@ -60,6 +60,40 @@ rl.on("line", function (line) {
 
     console.log(number1 + number2);
   }
+  process.exit();
 });
+
+```
+<br>
+
+## 8393번 합
+### 문제
+n이 주어졌을 때, 1부터 n까지 합을 구하는 프로그램을 작성하시오.
+### 입력
+첫째 줄에 n (1 ≤ n ≤ 10,000)이 주어진다.
+### 출력
+1부터 n까지 합을 출력한다.
+
+### 풀이
+```js
+const readline = require("readline");
+const rl = readline.createInterface({
+  input : process.stdin,
+  output : process.stdout
+});
+
+// 입력 코드. n이 한 개 주어지기때문에 그대로 받아와서 Number로 형변환 후 실행시켜주기.
+
+rl.on("line", function (line) {
+    const num = Number(line);
+    let answer = 0;
+
+    for(let i = 0; i <= num; i++) {
+      answer = answer + i;
+    }
+    console.log(answer);
+  }).on("close", function () {
+      process.exit();
+  });
 
 ```
