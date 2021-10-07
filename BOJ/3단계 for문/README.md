@@ -236,3 +236,54 @@ for (let i = 1; i <= count; i++) {
 }
 
 ```
+<br>
+
+## 11022번 A + B - 8
+### 문제
+두 정수 A와 B를 입력받은 다음, A + B를 출력하는 프로그램을 작성하시오.
+### 입력
+첫째 줄에 테스트 케이스의 개수 T가 주어진다.
+각 테스트 케이스는 한 줄로 이루어져 있으며, 각 줄에 A와 B가 주어진다. (0 < A, B < 10)
+### 출력
+각 테스트 케이스마다 "Case #x: A + B = C" 형식으로 출력한다. x는 테스트 케이스 번호이고 1부터 시작하며, C는 A+B이다.
+
+### 풀이
+```js
+let input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
+const count = Number(input[0]);
+
+for (let i = 1; i <= count; i++) {
+  const num1 = input[i].split(" ")[0];
+  const num2 = input[i].split(" ")[1];
+
+  console.log(`Case #${i}: ${num1} + ${num2} = ${Number(num1) + Number(num2)}`);
+}
+
+```
+<br>
+
+## 10871번 X보다 작은 수
+### 문제
+정수 N개로 이루어진 수열 A와 정수 X가 주어진다. 이때, A에서 X보다 작은 수를 모두 출력하는 프로그램을 작성하시오.
+### 입력
+첫째 줄에 N과 X가 주어진다. (1 ≤ N, X ≤ 10,000) <br>
+둘째 줄에 수열 A를 이루는 정수 N개가 주어진다. 주어지는 정수는 모두 1보다 크거나 같고, 10,000보다 작거나 같은 정수이다.
+### 출력
+X보다 작은 수를 입력받은 순서대로 공백으로 구분해 출력한다. X보다 작은 수는 적어도 하나 존재한다.
+
+### 풀이
+```js
+let input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
+const count = input[0].split(" ")[0];
+const x = input[0].split(" ")[1];
+const arr = input[1].split(" ");
+let answer = "";
+
+for (let i = 0; i < Number(count); i++) {
+  if (Number(x) > Number(arr[i])) {
+    answer += arr[i] + " ";
+  }
+}
+console.log(answer);
+
+```
