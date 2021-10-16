@@ -53,7 +53,7 @@ console.log(`${arr[0]} ${arr[idx - 1]}`);
 
 ```js
 const input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
-let arr = input.map((item) => Number(item));
+const arr = input.map((item) => Number(item));
 
 // arr의 첫번째 숫자를 기준으로 for문을 이용해 비교해준다.
 let max = arr[0];
@@ -67,4 +67,80 @@ for (let i = 1; i < 10; i++) {
 }
 
 console.log(`${max}\n${idx + 1}`);
+```
+
+<br>
+
+## 2577번 숫자의 개수
+
+### 문제
+
+세 개의 자연수 A, B, C가 주어질 때 A × B × C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.<br>
+예를 들어 A = 150, B = 266, C = 427 이라면 A × B × C = 150 × 266 × 427 = 17037300 이 되고, 계산한 결과 17037300 에는 0이 3번, 1이 1번, 3이 2번, 7이 2번 쓰였다.
+
+### 입력
+
+첫째 줄에 A, 둘째 줄에 B, 셋째 줄에 C가 주어진다. A, B, C는 모두 100보다 크거나 같고, 1,000보다 작은 자연수이다.
+
+### 출력
+
+첫째 줄에는 A × B × C의 결과에 0 이 몇 번 쓰였는지 출력한다. 마찬가지로 둘째 줄부터 열 번째 줄까지 A × B × C의 결과에 1부터 9까지의 숫자가 각각 몇 번 쓰였는지 차례로 한 줄에 하나씩 출력한다.
+
+### 풀이
+
+```js
+//  방법 1
+//  백준에서는 출력형식이 잘못되었다고 뜨지만, JS bin 또는 console에서 실행시 정답을 얻을 수 있다.
+const input = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .split("\n")
+  .map(Number);
+
+const num = (input[0] * input[1] * input[2]).toString();
+const countList = {
+  0: 0,
+  1: 0,
+  2: 0,
+  3: 0,
+  4: 0,
+  5: 0,
+  6: 0,
+  7: 0,
+  8: 0,
+  9: 0,
+};
+
+const arr = num.toString().split("").map(Number);
+
+for (const key in countList) {
+  for (let i = 0; i < 10; i++) {
+    if (arr[i] === +key) {
+      countList[key] = countList[key] + 1;
+    }
+  }
+}
+
+for (const key in countList) {
+  console.log(`${countList[key]}\n`);
+}
+
+//  방법 2
+const input = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .split("\n")
+  .map(Number);
+
+const num = String(input[0] * input[1] * input[2]);
+for (let i = 0; i < 10; i++) {
+  let count = 0;
+
+  for (let j = 0; j < num.length; j++) {
+    if (Number(num[j]) === i) {
+      count++;
+    }
+  }
+  console.log(count);
+}
 ```
