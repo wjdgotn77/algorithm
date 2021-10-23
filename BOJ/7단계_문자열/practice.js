@@ -1,8 +1,11 @@
-const input = "The Curious Case of Benjamin Button".trim().split(" ");
+const input = ["221", "231"];
 
-if (input[0] === "") {
-    console.log(0);
-} else {
-    console.log(input.length);
-}
-console.log(input.length);
+const reverseNum = input.map(item => {
+  return item.split("").reverse().join("");
+});
+
+const result = reverseNum.sort((a, b) => {
+  return Number(b) - Number(a);
+})
+
+console.log(result[0]);
