@@ -129,6 +129,7 @@ console.log(result);
 ## 1157번 단어공부
 
 ### 문제
+
 알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오. 단, 대문자와 소문자를 구분하지 않는다.
 
 ### 입력
@@ -150,6 +151,7 @@ const input = require("fs").readFileSync("/dev/stdin").toString();
 ## 1152번 단어의 갯수
 
 ### 문제
+
 영어 대소문자와 공백으로 이루어진 문자열이 주어진다. 이 문자열에는 몇 개의 단어가 있을까? 이를 구하는 프로그램을 작성하시오. 단, 한 단어가 여러 번 등장하면 등장한 횟수만큼 모두 세어야 한다.
 
 ### 입력
@@ -164,15 +166,20 @@ const input = require("fs").readFileSync("/dev/stdin").toString();
 
 ```js
 // trim 필수
-const input = require("fs").readFileSync("/dev/stdin").toString().trim().split(" ");
+const input = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split(" ");
 
 // input이 space로 주어지는 경우에 대한 예외처리.
 if (input[0] === "") {
-    console.log(0);
+  console.log(0);
 } else {
-    console.log(input.length);
+  console.log(input.length);
 }
 ```
+
 <br>
 
 ## 2908번 상수
@@ -196,16 +203,42 @@ if (input[0] === "") {
 ### 풀이
 
 ```js
-
-const input = require("fs").readFileSync("/dev/stdin").toString().trim().split(" ");
-const reverseNum = input.map(item => {
+const input = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split(" ");
+const reverseNum = input.map((item) => {
   return item.split("").reverse().join("");
 });
 
 const result = reverseNum.sort((a, b) => {
   return Number(b) - Number(a);
-})
+});
 
 console.log(result[0]);
+```
+
+<br>
+
+## 1316번 그룹 단어 체커
+
+### 문제
+
+그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만, aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다.
+<br>
+단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.
+
+### 입력
+
+첫째 줄에 단어의 개수 N이 들어온다. N은 100보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에 단어가 들어온다. 단어는 알파벳 소문자로만 되어있고 중복되지 않으며, 길이는 최대 100이다.
+
+### 출력
+
+첫째 줄에 그룹 단어의 개수를 출력한다.
+
+### 풀이
+
+```js
 
 ```
